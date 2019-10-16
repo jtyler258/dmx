@@ -33,9 +33,9 @@ EnttecOpenUsbDMX.prototype.sendUniverse = function () {
   }
 
   // toggle break
-  self.dev.set({brk: true, rts: true}, (err, r) => {
+  self.dev.set({brk: true, rts: false}, (err, r) => {
     setTimeout(() => {
-      self.dev.set({brk: false, rts: true}, (err, r) => {
+      self.dev.set({brk: false, rts: false}, (err, r) => {
         setTimeout(() => {
           self.dev.write(Buffer.concat([Buffer([0]), self.universe.slice(1)]));
         }, 1);
